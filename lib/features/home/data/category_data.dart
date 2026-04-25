@@ -61,5 +61,11 @@ final categories = [
     icon: "🚗",
     route: "/vehicles",
   ),
+  Category(
+    title: "Vegetables",
+    amharicTitle: "አትክልቶች",
+    icon: "🥦",
+    route: "/vegetables",
+  ),
   Category(title: "Quiz", amharicTitle: "ጥያቄ", icon: " 🎮", route: "/quiz"),
 ];

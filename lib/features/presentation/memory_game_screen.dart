@@ -7,6 +7,7 @@ import '../../../core/models/learning_item.dart';
 import '../../../core/services/audio_players.dart';
 import 'package:kids_app/features/home/data/sticker_data.dart';
 import 'package:kids_app/features/home/providers/sticker_provider.dart';
+import 'package:kids_app/features/profile/providers/profile_provider.dart';
 import 'widgets/memory_card.dart';
 
 class MemoryCardModel {
