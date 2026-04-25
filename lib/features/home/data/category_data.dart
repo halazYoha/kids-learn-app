@@ -67,5 +67,11 @@ final categories = [
     icon: "🥦",
     route: "/vegetables",
   ),
+  Category(
+    title: "Trace & Draw",
+    amharicTitle: "መጻፍና መሳል",
+    icon: "✍️",
+    route: "/tracing",
+  ),
   Category(title: "Quiz", amharicTitle: "ጥያቄ", icon: " 🎮", route: "/quiz"),
 ];

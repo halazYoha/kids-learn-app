@@ -13,6 +13,7 @@ import 'package:kids_app/features/presentation/memory_game_screen.dart';
 import 'package:kids_app/features/home/presentation/sticker_book_screen.dart';
 import 'package:kids_app/features/presentation/vehicles_screen.dart';
 import 'package:kids_app/features/presentation/vegetables_screen.dart';
+import 'package:kids_app/features/presentation/tracing_screen.dart';
 import 'package:kids_app/features/splash/presentation/splash_screen.dart';
 import 'package:kids_app/features/profile/presentation/profile_setup_screen.dart';
 import 'package:kids_app/features/profile/providers/profile_provider.dart';
@@ -51,6 +52,7 @@ class MyApp extends ConsumerWidget {
         "/quiz": (context) => const MatchingQuizScreen(),
         "/vehicles": (context) => const VehiclesScreen(),
         "/vegetables": (context) => const VegetablesScreen(),
+        "/tracing": (context) => const TracingScreen(),
         "/profile_setup": (context) => const ProfileSetupScreen(),
       },
     );
