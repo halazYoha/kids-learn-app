@@ -13,7 +13,8 @@ class NumbersScreen extends StatelessWidget {
 
     final List<LearningItem> basic = numbers.sublist(0, 10);
     final List<LearningItem> teens = numbers.sublist(10, 19);
-    final List<LearningItem> tens = numbers.sublist(19);
+    final List<LearningItem> twenties = numbers.sublist(19, 29);
+    final List<LearningItem> tens = numbers.sublist(29);
 
     return Scaffold(
       appBar: AppBar(
@@ -33,6 +34,7 @@ class NumbersScreen extends StatelessWidget {
           slivers: [
             _buildSliverSection("Basic Numbers (1–10)", basic, tts),
             _buildSliverSection("Teens (11–19)", teens, tts),
+            _buildSliverSection("Twenties (20–29)", twenties, tts),
             _buildSliverSection("Tens & Hundreds", tens, tts),
           ],
         ),

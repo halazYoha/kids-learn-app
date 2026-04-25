@@ -11,6 +11,7 @@ import 'package:kids_app/features/presentation/fruits_screen.dart';
 import 'package:kids_app/features/presentation/alphabet_screen.dart';
 import 'package:kids_app/features/presentation/memory_game_screen.dart';
 import 'package:kids_app/features/home/presentation/sticker_book_screen.dart';
+import 'package:kids_app/features/presentation/vehicles_screen.dart';
 import 'package:kids_app/features/splash/presentation/splash_screen.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home/presentation/home_screen.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         "/memory_game": (context) => const MemoryGameScreen(),
         "/stickers": (context) => const StickerBookScreen(),
         "/quiz": (context) => const MatchingQuizScreen(),
+        "/vehicles": (context) => const VehiclesScreen(),
       },
     );
   }

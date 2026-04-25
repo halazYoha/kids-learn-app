@@ -1,0 +1,31 @@
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 93.0.0 (99.0.0 available)
+  analyzer 10.0.1 (12.1.0 available)
+  confetti 0.7.0 (0.8.0 available)
+  matcher 0.12.18 (0.12.19 available)
+  meta 1.17.0 (1.18.2 available)
+  native_toolchain_c 0.17.6 (0.18.0 available)
+  test 1.29.0 (1.31.0 available)
+  test_api 0.7.9 (0.7.11 available)
+  test_core 0.6.15 (0.6.17 available)
+  vector_math 2.2.0 (2.3.0 available)
+Got dependencies!
+10 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Analyzing kids_app...                                           
+
+warning • Unused import: 'package:kids_app/core/theme/app_colors.dart' • lib/features/home/presentation/home_screen.dart:4:8 • unused_import
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:47:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:107:37 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:110:39 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:115:41 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:127:43 • deprecated_member_use
+   info • 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss • lib/features/home/presentation/home_screen.dart:150:43 • deprecated_member_use
+warning • Unused import: 'dart:math' • lib/features/home/presentation/widgets/sticker_card.dart:1:8 • unused_import
+warning • Unused import: 'package:flutter_riverpod/flutter_riverpod.dart' • lib/features/home/providers/sticker_provider.dart:2:8 • unused_import
+warning • Unused import: 'package:kids_app/features/home/data/sticker_data.dart' • lib/features/presentation/memory_game_screen.dart:8:8 • unused_import
+warning • The value of the field '_isFinished' isn't used • lib/features/presentation/memory_game_screen.dart:40:8 • unused_field
+   info • 'scale' is deprecated and shouldn't be used. Use scaleByVector3, scaleByVector4, or scaleByDouble instead • lib/features/presentation/widgets/memory_card.dart:36:17 • deprecated_member_use
+
+12 issues found. (ran in 4.3s)

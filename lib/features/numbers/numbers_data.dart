@@ -58,6 +58,51 @@ final List<LearningItem> numbers = [
     image: "assets/images/19.png",
   ),
   LearningItem(english: "Twenty", amharic: "ሀያ", image: "assets/images/20.png"),
+  LearningItem(
+    english: "Twenty One",
+    amharic: "ሀያ አንድ",
+    image: "assets/images/21.png",
+  ),
+  LearningItem(
+    english: "Twenty Two",
+    amharic: "ሀያ ሁለት",
+    image: "assets/images/22.png",
+  ),
+  LearningItem(
+    english: "Twenty Three",
+    amharic: "ሀያ ሶስት",
+    image: "assets/images/23.png",
+  ),
+  LearningItem(
+    english: "Twenty Four",
+    amharic: "ሀያ አራት",
+    image: "assets/images/24.png",
+  ),
+  LearningItem(
+    english: "Twenty Five",
+    amharic: "ሀያ አምስት",
+    image: "assets/images/25.png",
+  ),
+  LearningItem(
+    english: "Twenty Six",
+    amharic: "ሀያ ስድስት",
+    image: "assets/images/26.png",
+  ),
+  LearningItem(
+    english: "Twenty Seven",
+    amharic: "ሀያ ሰባት",
+    image: "assets/images/27.png",
+  ),
+  LearningItem(
+    english: "Twenty Eight",
+    amharic: "ሀያ ስምንት",
+    image: "assets/images/28.png",
+  ),
+  LearningItem(
+    english: "Twenty Nine",
+    amharic: "ሀያ ዘጠኝ",
+    image: "assets/images/29.png",
+  ),
 
   LearningItem(
     english: "Thirty",
