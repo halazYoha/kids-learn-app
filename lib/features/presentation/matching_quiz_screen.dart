@@ -7,6 +7,7 @@ import 'package:kids_app/core/services/tts_service.dart';
 import 'package:confetti/confetti.dart';
 import 'package:kids_app/features/home/providers/sticker_provider.dart';
 import 'package:kids_app/features/home/data/sticker_data.dart';
+import 'package:kids_app/features/profile/providers/profile_provider.dart';
 
 class MatchingQuizScreen extends ConsumerStatefulWidget {
   const MatchingQuizScreen({super.key});
@@ -22,6 +23,8 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
   final Map<String, bool> _matchedItems = {}; // english -> isMatched
   List<MatchingItem> _shuffledWords = [];
   List<MatchingItem> _shuffledImages = [];
+  Sticker? _finalSticker;
+  bool _awardingInProgress = false;
 
   @override
   void initState() {
@@ -83,40 +86,19 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
       barrierDismissible: false,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Column(
+        title: const Column(
           children: [
-            const Text(
+            Text(
               "🌟 Well Done! 🌟",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.orange),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 10),
-            if (awardedSticker != null) ...[
-              const Text("You earned a new sticker!", style: TextStyle(fontSize: 16)),
-              const SizedBox(height: 15),
-              Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.orange.shade50,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.orange.shade200, width: 2),
-                ),
-                child: Text(
-                  awardedSticker.emoji,
-                  style: const TextStyle(fontSize: 60),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                awardedSticker.name,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.orange),
-              ),
-            ] else
-              const Text(
-                "You matched them all!",
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
+            SizedBox(height: 10),
+            Text(
+              "You matched them all!",
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
         actions: [
@@ -147,6 +129,19 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(quizProvider);
+
+    ref.listen(quizProvider, (previous, next) async {
+      if (next.finished && !(previous?.finished ?? false) && !_awardingInProgress) {
+        _awardingInProgress = true;
+        final sticker = await ref.read(stickerProvider.notifier).unlockRandomSticker();
+        if (mounted) {
+          setState(() {
+            _finalSticker = sticker;
+            _awardingInProgress = false;
+          });
+        }
+      }
+    });
 
     if (state.finished) {
       return _buildFinishedScreen(state);
@@ -394,11 +389,28 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
             const Text("Quiz Finished!", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white)),
             const SizedBox(height: 10),
             const Text("Great Job!", style: TextStyle(fontSize: 24, color: Colors.white)),
+            const SizedBox(height: 20),
+            if (_finalSticker != null) ...[
+              const Text("You earned a special sticker!", style: TextStyle(color: Colors.white, fontSize: 18)),
+              const SizedBox(height: 15),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Text(_finalSticker!.emoji, style: const TextStyle(fontSize: 60)),
+              ),
+              const SizedBox(height: 10),
+              Text(_finalSticker!.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
+            ],
             const SizedBox(height: 10),
-            Text("Score: ${state.score}", style: const TextStyle(fontSize: 20, color: Colors.white70)),
+            Text("Final Score: ${state.score}", style: const TextStyle(fontSize: 20, color: Colors.white70)),
             const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () => ref.read(quizProvider.notifier).restartQuiz(),
+              onPressed: () {
+                setState(() {
+                  _finalSticker = null;
+                });
+                ref.read(quizProvider.notifier).restartQuiz();
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),

@@ -12,7 +12,10 @@ import 'package:kids_app/features/presentation/alphabet_screen.dart';
 import 'package:kids_app/features/presentation/memory_game_screen.dart';
 import 'package:kids_app/features/home/presentation/sticker_book_screen.dart';
 import 'package:kids_app/features/presentation/vehicles_screen.dart';
+import 'package:kids_app/features/presentation/vegetables_screen.dart';
 import 'package:kids_app/features/splash/presentation/splash_screen.dart';
+import 'package:kids_app/features/profile/presentation/profile_setup_screen.dart';
+import 'package:kids_app/features/profile/providers/profile_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home/presentation/home_screen.dart';
 
@@ -20,11 +23,12 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profile = ref.watch(profileProvider);
     return MaterialApp(
       title: 'Kids English App',
       debugShowCheckedModeBanner: false,
@@ -46,6 +50,8 @@ class MyApp extends StatelessWidget {
         "/stickers": (context) => const StickerBookScreen(),
         "/quiz": (context) => const MatchingQuizScreen(),
         "/vehicles": (context) => const VehiclesScreen(),
+        "/vegetables": (context) => const VegetablesScreen(),
+        "/profile_setup": (context) => const ProfileSetupScreen(),
       },
     );
   }

@@ -5,11 +5,23 @@ import 'package:kids_app/features/body_parts/human_body_parts.dart';
 import 'package:kids_app/features/shapes/data/shapes_data.dart';
 import 'package:kids_app/features/fruits/data/fruits_data.dart';
 import 'package:kids_app/features/alphabet/data/alphabet_data.dart';
+import 'package:kids_app/features/vehicles/vehicles_data.dart';
+import 'package:kids_app/features/vegetables/data/vegetables_data.dart';
 import 'package:kids_app/features/home/data/matching_models.dart';
 
 class QuizGenerator {
   static List<MatchingSet> generateMatchingSets() {
-    final allItems = [...animals, ...colors, ...numbers, ...bodyParts, ...shapes, ...fruits, ...alphabet];
+    final allItems = [
+      ...animals,
+      ...colors,
+      ...numbers,
+      ...bodyParts,
+      ...shapes,
+      ...fruits,
+      ...alphabet,
+      ...vehicles,
+      ...vegetables
+    ];
     allItems.shuffle();
 
     // Take 15 items for 5 sets of 3
@@ -31,6 +43,16 @@ class QuizGenerator {
   }
 
   static List<dynamic> getAllItems() {
-    return [...animals, ...colors, ...numbers, ...bodyParts, ...shapes, ...fruits, ...alphabet];
+    return [
+      ...animals,
+      ...colors,
+      ...numbers,
+      ...bodyParts,
+      ...shapes,
+      ...fruits,
+      ...alphabet,
+      ...vehicles,
+      ...vegetables
+    ];
   }
 }

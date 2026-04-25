@@ -4,32 +4,32 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Head",
     amharic: "ጭንቅላት",
-    image: "assets/images/head.png",
+    image: "assets/images/head.jpg",
   ),
   LearningItem(
     english: "Eye",
     amharic: "አይን",
-    image: "assets/images/eye.png",
+    image: "assets/images/eye.jpg",
   ),
   LearningItem(
     english: "Ear",
     amharic: "ጆሮ",
-    image: "assets/images/ear.png",
+    image: "assets/images/ear.jpg",
   ),
   LearningItem(
     english: "Nose",
     amharic: "አፍንጫ",
-    image: "assets/images/nose.png",
+    image: "assets/images/nose.jpg",
   ),
   LearningItem(
     english: "Mouth",
     amharic: "አፍ",
-    image: "assets/images/mouth.png",
+    image: "assets/images/mouth.jpg",
   ),
   LearningItem(
     english: "Teeth",
     amharic: "ጥርስ",
-    image: "assets/images/teeth.png",
+    image: "assets/images/teeth.jpg",
   ),
   LearningItem(
     english: "Tongue",
@@ -39,17 +39,17 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Hair",
     amharic: "ፀጉር",
-    image: "assets/images/hair.png",
+    image: "assets/images/hair.jpg",
   ),
   LearningItem(
     english: "Neck",
     amharic: "አንገት",
-    image: "assets/images/neck.png",
+    image: "assets/images/neck.jpg",
   ),
   LearningItem(
     english: "Shoulder",
     amharic: "ትከሻ",
-    image: "assets/images/shoulder.png",
+    image: "assets/images/shoulder.jpg",
   ),
   LearningItem(
     english: "Arm",
@@ -59,7 +59,7 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Hand",
     amharic: "እጅ",
-    image: "assets/images/hand.png",
+    image: "assets/images/hand.jpg",
   ),
   LearningItem(
     english: "Finger",
@@ -69,7 +69,7 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Chest",
     amharic: "ደረት",
-    image: "assets/images/chest.png",
+    image: "assets/images/chest.jpg",
   ),
   LearningItem(
     english: "Stomach",
@@ -84,12 +84,12 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Heart",
     amharic: "ልብ",
-    image: "assets/images/heart.png",
+    image: "assets/images/heart.jpg",
   ),
   LearningItem(
     english: "Brain",
     amharic: "አንጎል",
-    image: "assets/images/brain.png",
+    image: "assets/images/brain.jpg",
   ),
   LearningItem(
     english: "Leg",
@@ -99,6 +99,6 @@ final List<LearningItem> bodyParts = [
   LearningItem(
     english: "Foot",
     amharic: "እግር ተረከዝ",
-    image: "assets/images/foot.png",
+    image: "assets/images/foot.jpg",
   ),
 ];

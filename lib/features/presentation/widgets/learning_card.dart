@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../profile/providers/profile_provider.dart';
 
-class LearningCard extends StatefulWidget {
+class LearningCard extends ConsumerStatefulWidget {
   final String title;
   final String amharicTitle;
   final String image;
@@ -17,10 +19,10 @@ class LearningCard extends StatefulWidget {
   });
 
   @override
-  State<LearningCard> createState() => _LearningCardState();
+  ConsumerState<LearningCard> createState() => _LearningCardState();
 }
 
-class _LearningCardState extends State<LearningCard> with SingleTickerProviderStateMixin {
+class _LearningCardState extends ConsumerState<LearningCard> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 

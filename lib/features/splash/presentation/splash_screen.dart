@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kids_app/core/services/loading_service.dart';
+import 'package:kids_app/features/profile/providers/profile_provider.dart';
+import 'package:kids_app/features/profile/presentation/profile_setup_screen.dart';
 import 'package:kids_app/features/home/presentation/home_screen.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -67,15 +69,22 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       // Initialize app data using loading service
       await LoadingService.initializeApp();
       
+      // Explicitly wait for profile to load to ensure correct navigation
+      await ref.read(profileProvider.notifier).loadProfile();
+      
       // Wait for minimum splash screen duration
       await Future.delayed(const Duration(seconds: 1));
       
-      // Navigate to home screen
+      // Check if profile exists
+      final profile = ref.read(profileProvider);
+      
+      // Navigate to setup if no profile, otherwise to home
+      final targetScreen = profile == null ? const ProfileSetupScreen() : const HomeScreen();
+
       if (mounted) {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                const HomeScreen(),
+            pageBuilder: (context, animation, secondaryAnimation) => targetScreen,
             transitionsBuilder: (context, animation, secondaryAnimation, child) {
               return FadeTransition(
                 opacity: animation,
@@ -89,8 +98,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     } catch (e) {
       // Handle error and navigate to home screen anyway
       if (mounted) {
+        final profile = ref.read(profileProvider);
+        final targetScreen = profile == null ? const ProfileSetupScreen() : const HomeScreen();
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => targetScreen),
         );
       }
     }
@@ -149,7 +160,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                             ),
                             child: ClipOval(
                               child: Image.asset(
-                                'assets/images/dog.png', // Using existing dog image as logo
+                                'assets/images/dog.jpg', // Using existing dog image as logo
                                 width: 120,
                                 height: 120,
                                 fit: BoxFit.cover,
