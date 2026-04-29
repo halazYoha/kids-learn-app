@@ -14,6 +14,7 @@ import 'package:kids_app/features/home/presentation/sticker_book_screen.dart';
 import 'package:kids_app/features/presentation/vehicles_screen.dart';
 import 'package:kids_app/features/presentation/vegetables_screen.dart';
 import 'package:kids_app/features/presentation/tracing_screen.dart';
+import 'package:kids_app/features/story_time/presentation/story_screen.dart';
 import 'package:kids_app/features/splash/presentation/splash_screen.dart';
 import 'package:kids_app/features/profile/presentation/profile_setup_screen.dart';
 import 'package:kids_app/features/profile/providers/profile_provider.dart';
@@ -53,6 +54,7 @@ class MyApp extends ConsumerWidget {
         "/vehicles": (context) => const VehiclesScreen(),
         "/vegetables": (context) => const VegetablesScreen(),
         "/tracing": (context) => const TracingScreen(),
+        "/story_time": (context) => const StoryScreen(),
         "/profile_setup": (context) => const ProfileSetupScreen(),
       },
     );

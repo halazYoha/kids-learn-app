@@ -265,13 +265,6 @@ class _TracingScreenState extends State<TracingScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.blue.shade50, Colors.white],
-              ),
-            ),
             child: Column(
               children: [
                 const Padding(

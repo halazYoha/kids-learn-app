@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kids_app/core/theme/text_style.dart';
 import '../data/category_data.dart';
-import '../data/category_data.dart';
+import '../model/hub_category.dart';
+import 'category_hub_screen.dart';
 import '../../profile/providers/profile_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -13,12 +14,13 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(profileProvider);
     final List<String> avatars = ["🐶", "🐱", "🦊", "🦁", "🐯", "🐼", "🦄", "🐉"];
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
           "Kids Learn",
-          style: AppTextStyles.title.copyWith(color: Colors.white),
+          style: AppTextStyles.title.copyWith(color: Colors.black87),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,17 +30,6 @@ class HomeScreen extends ConsumerWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF6C63FF),
-              Color(0xFF8E8CD8),
-              Color(0xFFFFB74D),
-            ],
-          ),
-        ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -50,9 +41,10 @@ class HomeScreen extends ConsumerWidget {
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.2),
+                      color: Colors.black.withValues(alpha: 0.05),
                       borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+                      border: Border.all(
+                          color: Colors.black.withValues(alpha: 0.1)),
                     ),
                     child: Row(
                       children: [
@@ -77,13 +69,14 @@ class HomeScreen extends ConsumerWidget {
                                 style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.black87,
                                 ),
                               ),
-                                Text(
-                                  "Explorer",
-                                  style: const TextStyle(color: Colors.white70, fontSize: 14),
-                                ),
+                              const Text(
+                                "Explorer",
+                                style: TextStyle(
+                                    color: Colors.black54, fontSize: 14),
+                              ),
                             ],
                           ),
                         ),
@@ -92,26 +85,23 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 const SizedBox(height: 30),
                 Text(
-                  "Choose a category",
+                  "Where do you want to go?",
                   style: AppTextStyles.subtitle.copyWith(
-                    color: Colors.white.withValues(alpha: 0.9),
+                    color: Colors.black87,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 20),
                 Expanded(
-                  child: GridView.builder(
-                    itemCount: categories.length,
+                  child: ListView.builder(
+                    itemCount: hubs.length,
                     physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      childAspectRatio: 0.9,
-                    ),
                     itemBuilder: (context, index) {
-                      final category = categories[index];
-                      return _CategoryCard(category: category);
+                      final hub = hubs[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 24),
+                        child: _HubCard(hub: hub),
+                      );
                     },
                   ),
                 ),
@@ -124,16 +114,16 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
-class _CategoryCard extends StatefulWidget {
-  final dynamic category;
+class _HubCard extends StatefulWidget {
+  final CategoryHub hub;
 
-  const _CategoryCard({required this.category});
+  const _HubCard({required this.hub});
 
   @override
-  State<_CategoryCard> createState() => _CategoryCardState();
+  State<_HubCard> createState() => _HubCardState();
 }
 
-class _CategoryCardState extends State<_CategoryCard> {
+class _HubCardState extends State<_HubCard> {
   bool _isHovered = false;
 
   @override
@@ -143,70 +133,114 @@ class _CategoryCardState extends State<_CategoryCard> {
       onTapUp: (_) => setState(() => _isHovered = false),
       onTapCancel: () => setState(() => _isHovered = false),
       onTap: () {
-        Navigator.pushNamed(context, widget.category.route);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryHubScreen(hub: widget.hub),
+          ),
+        );
       },
       child: AnimatedScale(
         scale: _isHovered ? 0.95 : 1.0,
         duration: const Duration(milliseconds: 100),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.2),
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.3),
-                  width: 1.5,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+        child: Container(
+          constraints: const BoxConstraints(minHeight: 140),
+          decoration: BoxDecoration(
+            color: widget.hub.gradientColors.first,
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+            ],
+          ),
+              child: Stack(
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Text(
-                      widget.category.icon,
-                      style: const TextStyle(fontSize: 40),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    widget.category.title,
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.subtitle.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                  // Decorative background icon (faded)
+                  Positioned(
+                    right: -20,
+                    bottom: -20,
+                    child: Opacity(
+                      opacity: 0.2,
+                      child: Text(
+                        widget.hub.icon,
+                        style: const TextStyle(fontSize: 100),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    widget.category.amharicTitle,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.8),
-                      fontSize: 14,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                    child: Row(
+                      children: [
+                        // Left Icon Circle
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.3),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Text(
+                            widget.hub.icon,
+                            style: const TextStyle(fontSize: 46),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        // Right Text Area
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                widget.hub.title,
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                widget.hub.amharicTitle,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white.withValues(alpha: 0.9),
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                widget.hub.subtitle,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white.withValues(alpha: 0.8),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // Action Arrow Right
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.2),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
+        );
+      }
+    }

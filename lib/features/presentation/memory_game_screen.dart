@@ -239,13 +239,6 @@ class _MemoryGameScreenState extends ConsumerState<MemoryGameScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.blue.shade50, Colors.white],
-              ),
-            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

@@ -118,19 +118,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              const Color(0xFF6C63FF),
-              const Color(0xFF8B82FF),
-              const Color(0xFFB5AFFF),
-              const Color(0xFFF6F9FF),
-            ],
-            stops: const [0.0, 0.3, 0.6, 1.0],
-          ),
-        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -175,10 +162,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                             style: TextStyle(
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black87,
                               shadows: [
                                 Shadow(
-                                  color: Colors.black26,
+                                  color: Colors.black12,
                                   blurRadius: 10,
                                   offset: Offset(0, 4),
                                 ),
@@ -192,7 +179,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                             'Fun Learning Adventure',
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.white70,
+                              color: Colors.black54,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -220,7 +207,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                             'Loading amazing content...',
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.white70,
+                              color: Colors.black54,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -245,11 +232,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                             widthFactor: _progressAnimation.value,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.blue,
                                 borderRadius: BorderRadius.circular(3),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.white.withValues(alpha: 0.5),
+                                    color: Colors.blue.withValues(alpha: 0.3),
                                     blurRadius: 10,
                                     offset: const Offset(0, 0),
                                   ),
@@ -276,7 +263,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                               height: 8,
                               width: 8,
                               decoration: BoxDecoration(
-                                color: Colors.white.withValues(
+                                color: Colors.blue.withValues(
                                   alpha: _progressAnimation.value > (index + 1) * 0.3
                                       ? 1.0
                                       : 0.3,

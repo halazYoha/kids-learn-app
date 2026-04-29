@@ -17,13 +17,6 @@ class AnimalsScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.orange.shade50, Colors.white],
-          ),
-        ),
         child: GridView.builder(
           padding: const EdgeInsets.all(20),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

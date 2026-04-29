@@ -20,13 +20,6 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Colors.purple.shade100, Colors.blue.shade100, Colors.white],
-          ),
-        ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(30.0),
