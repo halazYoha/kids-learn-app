@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod/legacy.dart';
+
 import '../../../../core/services/local_storage.dart';
 import '../data/sticker_data.dart';
 

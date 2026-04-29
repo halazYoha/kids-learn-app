@@ -13,11 +13,11 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   flutter_tts: ^4.2.5
-  shared_preferences: ^2.2.3 
-  riverpod: ^3.2.1  # for high score (we will use later)
-  flutter_riverpod: ^3.3.1
+  shared_preferences: ^2.2.3
+  flutter_riverpod: ^2.5.1
   confetti: ^0.7.0
   audioplayers: ^6.6.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -34,3 +34,8 @@ flutter:
     - assets/images/vehicles/
     - assets/images/vegetables/
     - assets/sounds/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"

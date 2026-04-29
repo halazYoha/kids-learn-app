@@ -3,7 +3,7 @@ import 'package:kids_app/core/services/audio_players.dart';
 import 'package:kids_app/core/services/local_storage.dart';
 import 'package:kids_app/core/services/quiz_genrator.dart';
 import 'package:kids_app/features/home/data/matching_models.dart';
-import 'package:riverpod/legacy.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class QuizState {
   final List<MatchingSet> sets;

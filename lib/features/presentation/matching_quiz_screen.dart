@@ -182,13 +182,6 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.orange.shade50, Colors.white],
-              ),
-            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -380,7 +373,6 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.orange.shade200, Colors.orange.shade400])),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

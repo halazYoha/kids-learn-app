@@ -14,13 +14,6 @@ class VegetablesScreen extends StatelessWidget {
         backgroundColor: Colors.green.shade100,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.green.shade50, Colors.white],
-          ),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: GridView.builder(

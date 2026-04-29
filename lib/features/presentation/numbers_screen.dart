@@ -23,13 +23,6 @@ class NumbersScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.green.shade50, Colors.white],
-          ),
-        ),
         child: CustomScrollView(
           slivers: [
             _buildSliverSection("Basic Numbers (1–10)", basic, tts),
