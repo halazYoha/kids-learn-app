@@ -28,6 +28,7 @@ final List<CategoryHub> hubs = [
       Category(title: "Vegetables", amharicTitle: "አትክልቶች", icon: "🥦", route: "/vegetables"),
       Category(title: "Vehicles", amharicTitle: "ተሽከርካሪዎች", icon: "🚗", route: "/vehicles"),
       Category(title: "Body Parts", amharicTitle: "የሰውነት ክፍሎች", icon: "👤", route: "/body_parts"),
+      Category(title: "Action Words", amharicTitle: "የድርጊት ቃላት", icon: "🏃", route: "/actions"),
     ],
   ),
   CategoryHub(
