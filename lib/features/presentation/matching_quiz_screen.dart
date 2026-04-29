@@ -373,6 +373,13 @@ class _MatchingQuizScreenState extends ConsumerState<MatchingQuizScreen>
     return Scaffold(
       body: Container(
         width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.orange.shade400, Colors.deepPurple.shade400],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -20,6 +20,7 @@ import 'package:kids_app/features/profile/presentation/profile_setup_screen.dart
 import 'package:kids_app/features/profile/providers/profile_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home/presentation/home_screen.dart';
+import 'package:kids_app/features/action_words/presentation/action_hub_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -55,6 +56,7 @@ class MyApp extends ConsumerWidget {
         "/vegetables": (context) => const VegetablesScreen(),
         "/tracing": (context) => const TracingScreen(),
         "/story_time": (context) => const StoryScreen(),
+        "/actions": (context) => const ActionHubScreen(),
         "/profile_setup": (context) => const ProfileSetupScreen(),
       },
     );
